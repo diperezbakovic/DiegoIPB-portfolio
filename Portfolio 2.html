@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="description"
+    content="Portfolio of Diego I. Perez Bakovic — Software Engineer and M.S. Applied Business Analytics student."
+  />
+
+  <title>Diego I. Perez Bakovic — Software Engineer</title>
+
+  <!-- Royal Athletic typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    /* =========================================================
+       ROYAL ATHLETIC — DESIGN TOKENS
+       ========================================================= */
+
+    :root {
+      --navy: #0F141C;
+      --pitch-navy: #1E293B;
+      --gold: #E5A93C;
+
+      --cream: #FFEEDA;
+      --wave: #FFDEAD;
+
+      --surface: #f8f9ff;
+      --white: #ffffff;
+
+      --body-text: #475569;
+      --muted: #64748B;
+      --divider: #E2E8F0;
+
+      --heading: "Montserrat", sans-serif;
+      --body: "Inter", sans-serif;
+
+      --max-width: 1180px;
+      --radius: 8px;
+    }
+
+
+    /* =========================================================
+       RESET / BASE
+       ========================================================= */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--surface);
+      color: var(--navy);
+
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.65;
+
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    ul {
+      margin-top: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--heading);
+      color: var(--navy);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ::selection {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .container {
+      width: min(calc(100% - 6rem), var(--max-width));
+      margin-inline: auto;
+    }
+
+
+    /* =========================================================
+       TYPOGRAPHY
+       ========================================================= */
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      margin-bottom: 14px;
+
+      font-family: var(--heading);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      flex: 0 0 28px;
+      width: 28px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 48px;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 0;
+
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+
+    /* =========================================================
+       NAVIGATION
+       ========================================================= */
+
+    .nav {
+      position: absolute;
+      z-index: 20;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      padding: 26px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .monogram {
+      display: grid;
+      place-items: center;
+
+      width: 42px;
+      height: 42px;
+
+      border: 1.5px solid var(--navy);
+      border-radius: 50%;
+
+      font-family: var(--heading);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      position: relative;
+
+      font-family: var(--heading);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+
+      width: 0;
+      height: 2px;
+
+      background: var(--gold);
+
+      transition: width 180ms ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after {
+      width: 100%;
+    }
+
+
+    /* =========================================================
+       ARCHITECTURAL WAVE SECTIONS
+
+       IMPORTANT:
+       - Cream is the actual section background.
+       - SVG is decorative only.
+       - No photograph is used.
+       - No repeating CSS background is used.
+       - Each rib is a unique Bezier curve.
+       - Stroke gradients + masks make the ribs dissolve into
+         the cream instead of ending abruptly.
+       ========================================================= */
+
+    .architectural-section {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+
+      background: var(--cream);
+    }
+
+    .wave-art {
+      position: absolute;
+      z-index: 0;
+
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      pointer-events: none;
+    }
+
+    .wave-art svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .architectural-content {
+      position: relative;
+      z-index: 2;
+    }
+
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      min-height: 760px;
+
+      display: flex;
+      align-items: center;
+
+      padding: 150px 0 100px;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .hero h1 {
+      max-width: 830px;
+      margin-bottom: 0;
+
+      font-size: clamp(3.3rem, 7vw, 5.6rem);
+      font-weight: 800;
+      line-height: 0.96;
+      letter-spacing: -0.055em;
+    }
+
+    .hero h1 .accent {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero h1 .accent::after {
+      content: "";
+
+      position: absolute;
+      z-index: -1;
+
+      left: 2px;
+      right: 0;
+      bottom: 3px;
+
+      height: 9px;
+
+      background: var(--gold);
+      opacity: 0.58;
+    }
+
+    .hero-role {
+      max-width: 690px;
+
+      margin-top: 30px;
+      margin-bottom: 0;
+
+      color: var(--pitch-navy);
+
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      line-height: 1.55;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+
+      margin-top: 38px;
+    }
+
+
+    /* =========================================================
+       BUTTONS
+       ========================================================= */
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      min-height: 48px;
+      padding: 12px 24px;
+
+      border: 1.5px solid var(--navy);
+      border-radius: 4px;
+
+      font-family: var(--heading);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+
+      transition:
+        background 160ms ease,
+        color 160ms ease,
+        border-color 160ms ease,
+        transform 160ms ease;
+    }
+
+    .button-primary {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .button-primary:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--navy);
+
+      transform: translateY(-2px);
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.20);
+      color: var(--navy);
+    }
+
+    .button-secondary:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+
+      transform: translateY(-2px);
+    }
+
+    .arrow {
+      font-size: 16px;
+      line-height: 1;
+
+      transition: transform 160ms ease;
+    }
+
+    .button:hover .arrow {
+      transform: translate(2px, -2px);
+    }
+
+
+    /* =========================================================
+       MIDDLE CONTENT
+
+       Strictly #f8f9ff.
+       No waves.
+       No colored section blocks.
+       ========================================================= */
+
+    main {
+      background: var(--surface);
+    }
+
+    .content-section {
+      position: relative;
+      z-index: 3;
+
+      padding: 110px 0;
+
+      background: var(--surface);
+    }
+
+    .content-section + .content-section {
+      padding-top: 45px;
+    }
+
+
+    /* =========================================================
+       EXPERIENCE
+       ========================================================= */
+
+    .experience-list {
+      border-top: 1px solid var(--divider);
+    }
+
+    .experience {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 55px;
+
+      padding: 42px 0;
+
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .experience-meta {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .experience-date {
+      display: block;
+
+      margin-bottom: 5px;
+
+      color: var(--navy);
+
+      font-family: var(--heading);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .experience-content h3 {
+      margin-bottom: 5px;
+
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .company {
+      display: block;
+
+      margin-bottom: 18px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .resume-bullets {
+      max-width: 790px;
+
+      margin-bottom: 0;
+      padding-left: 20px;
+
+      color: var(--body-text);
+    }
+
+    .resume-bullets li {
+      padding-left: 5px;
+    }
+
+    .resume-bullets li + li {
+      margin-top: 8px;
+    }
+
+    .resume-bullets li::marker {
+      color: var(--gold);
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+
+      margin-top: 22px;
+    }
+
+    .tech {
+      padding: 5px 10px;
+
+      border: 1px solid var(--divider);
+      border-radius: 999px;
+
+      background: rgba(255, 255, 255, 0.65);
+
+      color: var(--navy);
+
+      font-family: var(--heading);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       PROJECTS
+       ========================================================= */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+
+      display: flex;
+      flex-direction: column;
+
+      min-height: 470px;
+      padding: 34px;
+
+      border: 1px solid var(--divider);
+      border-radius: var(--radius);
+
+      /*
+       * Very close to the section surface — intentionally no
+       * heavy contrasting block.
+       */
+      background: rgba(255, 255, 255, 0.58);
+
+      transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+    }
+
+    .project-card::before {
+      content: "";
+
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 3px;
+
+      background: var(--gold);
+
+      transform: scaleX(0);
+      transform-origin: left;
+
+      transition: transform 220ms ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+
+      border-color: #CBD5E1;
+
+      box-shadow:
+        0 12px 32px -4px rgba(15, 20, 28, 0.06);
+    }
+
+    .project-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .project-number {
+      display: block;
+
+      margin-bottom: 44px;
+
+      color: var(--gold);
+
+      font-family: var(--heading);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .project-card h3 {
+      max-width: 450px;
+
+      margin-bottom: 20px;
+
+      font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .project-card .resume-bullets {
+      margin-bottom: 28px;
+
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+
+      margin-top: auto;
+      padding-top: 12px;
+
+      color: var(--muted);
+
+      font-family: var(--heading);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .project-tech span + span::before {
+      content: "/";
+
+      margin-right: 16px;
+
+      color: var(--gold);
+    }
+
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    .footer {
+      min-height: 500px;
+
+      display: flex;
+      align-items: center;
+
+      padding: 100px 0 50px;
+    }
+
+    .footer-content {
+      width: 100%;
+    }
+
+    .footer h2 {
+      max-width: 850px;
+
+      margin-bottom: 0;
+
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+    }
+
+    .footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+
+      margin-top: 32px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+
+      margin-top: 85px;
+      padding-top: 22px;
+
+      border-top: 1px solid rgba(15, 20, 28, 0.20);
+
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       ACCESSIBILITY
+       ========================================================= */
+
+    a:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 900px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: min(calc(100% - 2rem), var(--max-width));
+      }
+
+      .nav {
+        padding: 20px 0;
+      }
+
+      .nav-links {
+        gap: 18px;
+      }
+
+      .nav-links a:first-child {
+        display: none;
+      }
+
+      .hero {
+        min-height: 700px;
+
+        padding: 130px 0 80px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 14vw, 4.5rem);
+      }
+
+      /*
+       * Make the architectural texture more peripheral on small
+       * screens so it never interferes with hero readability.
+       */
+      .hero .wave-art {
+        width: 145%;
+        left: -25%;
+      }
+
+      .content-section {
+        padding: 80px 0;
+      }
+
+      .content-section + .content-section {
+        padding-top: 25px;
+      }
+
+      .section-heading {
+        margin-bottom: 32px;
+      }
+
+      .experience {
+        grid-template-columns: 1fr;
+        gap: 16px;
+
+        padding: 34px 0;
+      }
+
+      .project-card {
+        padding: 28px;
+      }
+
+      .footer {
+        min-height: 530px;
+      }
+
+      .footer .wave-art {
+        width: 145%;
+        left: -20%;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+
+        margin-top: 65px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links a {
+        font-size: 10px;
+      }
+
+      .hero-actions,
+      .footer-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .project-card {
+        padding: 24px;
+      }
+
+      .project-number {
+        margin-bottom: 34px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <!-- =======================================================
+       NAVIGATION
+       ======================================================= -->
+
+  <nav class="nav" aria-label="Main navigation">
+    <div class="container nav-inner">
+
+      <a
+        class="monogram"
+        href="#top"
+        aria-label="Diego Perez Bakovic home"
+      >
+        DP
+      </a>
+
+      <div class="nav-links">
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="mailto:diperezbakovic@gmail.com">Contact</a>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!-- =======================================================
+       HERO
+
+       Direction:
+       TOP LEFT → DOWNWARD / RIGHT
+
+       The paths deliberately converge near the upper-left,
+       expand across the page, then arc downward.
+
+       Gradient strokes become more visible toward the right.
+       The opacity mask additionally dissolves the entire
+       structure into the cream background.
+       ======================================================= -->
+
+  <header id="top" class="hero architectural-section">
+
+    <div class="wave-art" aria-hidden="true">
+
+      <svg
+        viewBox="0 0 1600 760"
+        preserveAspectRatio="xMidYMid slice"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+
+        <defs>
+
+          <!--
+            Individual strokes:
+            almost invisible on the left,
+            gently visible through the center/right,
+            then softened at the far edge.
+          -->
+          <linearGradient
+            id="heroStroke"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
+            <stop
+              offset="0%"
+              stop-color="#FFDEAD"
+              stop-opacity="0"
+            />
+
+            <stop
+              offset="24%"
+              stop-color="#FFDEAD"
+              stop-opacity="0.08"
+            />
+
+            <stop
+              offset="58%"
+              stop-color="#FFDEAD"
+              stop-opacity="0.34"
+            />
+
+            <stop
+              offset="82%"
+              stop-color="#FFDEAD"
+              stop-opacity="0.48"
+            />
+
+            <stop
+              offset="100%"
+              stop-color="#FFDEAD"
+              stop-opacity="0.10"
+            />
+          </linearGradient>
+
+
+          <!--
+            Whole composition fade.
+            Black = hidden.
+            White = visible.
+          -->
+          <linearGradient
+            id="heroMaskGradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="78%"
+          >
+            <stop offset="0%" stop-color="black" />
+            <stop offset="22%" stop-color="#222" />
+            <stop offset="48%" stop-color="#9b9b9b" />
+            <stop offset="76%" stop-color="white" />
+            <stop offset="100%" stop-color="#9d9d9d" />
+          </linearGradient>
+
+          <mask id="heroFade">
+            <rect
+              width="100%"
+              height="100%"
+              fill="url(#heroMaskGradient)"
+            />
+          </mask>
+
+          <!-- Softens the ribs very slightly -->
+          <filter
+            id="heroSoft"
+            x="-10%"
+            y="-10%"
+            width="120%"
+            height="120%"
+          >
+            <feGaussianBlur stdDeviation="0.45" />
+          </filter>
+
+        </defs>
+
+
+        <g
+          mask="url(#heroFade)"
+          fill="none"
+          stroke="url(#heroStroke)"
+          stroke-linecap="round"
+          filter="url(#heroSoft)"
+        >
+
+          <!--
+            Unique architectural ribs.
+            These are intentionally NOT mechanically repeated.
+          -->
+
+          <path
+            d="M -120 -65
+               C 150 -20, 330 30, 505 105
+               C 750 210, 965 410, 1690 525"
+            stroke-width="7"
+          />
+
+          <path
+            d="M -115 -35
+               C 145 5, 325 58, 500 132
+               C 745 236, 975 426, 1695 550"
+            stroke-width="7.5"
+          />
+
+          <path
+            d="M -108 -4
+               C 140 34, 315 84, 495 158
+               C 745 260, 982 447, 1700 578"
+            stroke-width="8"
+          />
+
+          <path
+            d="M -98 28
+               C 135 63, 305 110, 490 184
+               C 745 286, 990 469, 1705 606"
+            stroke-width="8.5"
+          />
+
+          <path
+            d="M -88 61
+               C 132 91, 300 138, 487 210
+               C 745 310, 998 490, 1710 635"
+            stroke-width="9"
+          />
+
+          <path
+            d="M -74 95
+               C 130 121, 295 166, 486 237
+               C 747 334, 1005 512, 1715 665"
+            stroke-width="9.5"
+          />
+
+          <path
+            d="M -56 130
+               C 132 151, 294 195, 488 264
+               C 750 359, 1014 535, 1720 696"
+            stroke-width="10"
+          />
+
+          <path
+            d="M -35 166
+               C 138 182, 297 224, 493 292
+               C 757 383, 1023 557, 1725 728"
+            stroke-width="10.5"
+          />
+
+          <path
+            d="M -10 203
+               C 147 214, 303 254, 500 320
+               C 764 408, 1035 579, 1730 760"
+            stroke-width="11"
+          />
+
+          <path
+            d="M 20 242
+               C 158 247, 312 284, 510 349
+               C 773 432, 1047 601, 1735 794"
+            stroke-width="11.5"
+          />
+
+          <path
+            d="M 55 282
+               C 173 282, 324 316, 522 378
+               C 783 457, 1060 623, 1740 828"
+            stroke-width="12"
+          />
+
+          <path
+            d="M 95 324
+               C 191 319, 340 349, 537 407
+               C 795 481, 1073 645, 1745 864"
+            stroke-width="12.5"
+          />
+
+          <path
+            d="M 140 367
+               C 213 357, 358 383, 553 436
+               C 809 505, 1088 666, 1750 900"
+            stroke-width="13"
+          />
+
+          <path
+            d="M 190 412
+               C 238 396, 379 418, 572 466
+               C 823 530, 1104 688, 1755 938"
+            stroke-width="13.5"
+          />
+
+        </g>
+
+      </svg>
+
+    </div>
+
+
+    <div class="container architectural-content">
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          Software Engineer · Fayetteville, AR
+        </div>
+
+        <h1>
+          Diego I.<br>
+          <span class="accent">Perez Bakovic</span>
+        </h1>
+
+        <p class="hero-role">
+          Software Engineer &amp; M.S. Applied Business Analytics student
+          building thoughtful digital experiences at the intersection of
+          software, data, and emerging technology.
+        </p>
+
+        <div class="hero-actions">
+
+          <a
+            class="button button-primary"
+            href="mailto:diperezbakovic@gmail.com"
+          >
+            Email Me
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a
+            class="button button-secondary"
+            href="https://www.linkedin.com/in/diperezbakovic"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- =====================================================
+         EXPERIENCE — ALL RESUME CONTENT
+         ===================================================== -->
+
+    <section id="experience" class="content-section">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">01 / Experience</div>
+          <h2>Professional Experience</h2>
+        </div>
+
+
+        <div class="experience-list">
+
+
+          <!-- GRADUATE ASSISTANT -->
+
+          <article class="experience">
+
+            <div class="experience-meta">
+              <span class="experience-date">
+                Aug 2023 — Present
+              </span>
+
+              University of Arkansas
+            </div>
+
+            <div class="experience-content">
+
+              <h3>Graduate Assistant</h3>
+
+              <span class="company">
+                University of Arkansas
+              </span>
+
+              <ul class="resume-bullets">
+
+                <li>
+                  Graded assignments, exams, and held regular office hours
+                  to assist students with questions and reinforce course
+                  content.
+                </li>
+
+                <li>
+                  Collaborated with professors to ensure consistent grading
+                  standards, providing constructive feedback for various
+                  classes, including Mobile Programming, Information Security
+                  and Cloud Computing and Security.
+                </li>
+
+              </ul>
+
+            </div>
+
+          </article>
+
+
+          <!-- SOFTWARE DEVELOPER INTERN -->
+
+          <article class="experience">
+
+            <div class="experience-meta">
+
+              <span class="experience-date">
+                May 2022 — July 2022
+              </span>
+
+              AssureSoft
+
+            </div>
+
+            <div class="experience-content">
+
+              <h3>Software Developer Intern</h3>
+
+              <span class="company">
+                AssureSoft
+              </span>
+
+              <ul class="resume-bullets">
+
+                <li>
+                  Collaborated on a team project to build a full web
+                  application from scratch using Git and Scrum ceremonies.
+                </li>
+
+                <li>
+                  Developed and tested Angular and NodeJS features to monitor
+                  the training progress of new developers.
+                </li>
+
+                <li>
+                  Built and tested APIs with CRUD operations and optimized
+                  database queries for efficient front-end/back-end
+                  integration.
+                </li>
+
+              </ul>
+
+              <div class="tech-list">
+                <span class="tech">Angular</span>
+                <span class="tech">NodeJS</span>
+                <span class="tech">Git</span>
+                <span class="tech">Scrum</span>
+                <span class="tech">CRUD APIs</span>
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <!-- RESEARCH ASSISTANT -->
+
+          <article class="experience">
+
+            <div class="experience-meta">
+
+              <span class="experience-date">
+                Jan 2019 — May 2020
+              </span>
+
+              University of Arkansas
+
+            </div>
+
+            <div class="experience-content">
+
+              <h3>Research Assistant</h3>
+
+              <span class="company">
+                University of Arkansas
+              </span>
+
+              <ul class="resume-bullets">
+
+                <li>
+                  Designed and demonstrated a pilot-scale benchtop filtration
+                  system for industrial contaminant removal.
+                </li>
+
+                <li>
+                  Developed and optimized membrane manufacturing processes
+                  for improved filtration efficiency.
+                </li>
+
+              </ul>
+
+            </div>
+
+          </article>
+
+
+          <!-- QUALITY ASSURANCE INTERN -->
+
+          <article class="experience">
+
+            <div class="experience-meta">
+
+              <span class="experience-date">
+                Jan 2018 — July 2018
+              </span>
+
+              Saavedra Dairy Enterprises
+
+            </div>
+
+            <div class="experience-content">
+
+              <h3>Quality Assurance Intern</h3>
+
+              <span class="company">
+                Saavedra Dairy Enterprises
+              </span>
+
+              <ul class="resume-bullets">
+
+                <li>
+                  Ensured process metrics adhered to quality and operational
+                  standards for continuous improvement.
+                </li>
+
+                <li>
+                  Optimized material usage to reduce waste, lower OpEx costs,
+                  and yield higher-value products.
+                </li>
+
+              </ul>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROJECTS — ALL RESUME CONTENT
+         ===================================================== -->
+
+    <section id="projects" class="content-section">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">02 / Selected Projects</div>
+          <h2>Software built from concept to implementation.</h2>
+        </div>
+
+
+        <div class="projects-grid">
+
+
+          <!-- PROJECT 01 -->
+
+          <article class="project-card">
+
+            <span class="project-number">
+              PROJECT / 01 · SPRING 2025
+            </span>
+
+            <h3>
+              Unity Augmented Reality Campus Guide with GPS &amp; Audio
+            </h3>
+
+            <ul class="resume-bullets">
+
+              <li>
+                Built a Unity-based AR app that uses GPS-triggered zones to
+                display building descriptions and play directional audio.
+              </li>
+
+              <li>
+                Integrated official university text and audio from the
+                virtual tour for a more authentic user experience.
+              </li>
+
+              <li>
+                Designed and implemented a 3D Razorback mascot that reveals
+                building info and audio controls when tapped.
+              </li>
+
+              <li>
+                Developed a world-space UI panel with scrollable text and
+                play/pause logic using ARCore and custom scripts.
+              </li>
+
+            </ul>
+
+            <div class="project-tech">
+              <span>Unity</span>
+              <span>ARCore</span>
+              <span>GPS</span>
+              <span>3D</span>
+            </div>
+
+          </article>
+
+
+          <!-- PROJECT 02 -->
+
+          <article class="project-card">
+
+            <span class="project-number">
+              PROJECT / 02 · FALL 2022
+            </span>
+
+            <h3>
+              Kotlin-Based Food Map App with Geo-Tagged Reviews
+            </h3>
+
+            <ul class="resume-bullets">
+
+              <li>
+                Developed a Kotlin-based Android app where users can share
+                food reviews, metrics, and photos.
+              </li>
+
+              <li>
+                Integrated OpenStreetMap API to provide location-based
+                recommendations and address the problem of inaccurate food
+                reviews.
+              </li>
+
+              <li>
+                Secured user data with Firebase Authentication, allowing
+                users to view only their own reviews and those of followed
+                users.
+              </li>
+
+              <li>
+                Enabled data persistence across devices through Firebase
+                Storage and Android Room for seamless user experience.
+              </li>
+
+            </ul>
+
+            <div class="project-tech">
+              <span>Kotlin</span>
+              <span>OpenStreetMap</span>
+              <span>Firebase</span>
+              <span>Room</span>
+            </div>
+
+          </article>
+
+
+          <!-- PROJECT 03 -->
+
+          <article class="project-card">
+
+            <span class="project-number">
+              PROJECT / 03 · FALL 2022
+            </span>
+
+            <h3>
+              Route Optimizer for Efficient Campus Navigation
+            </h3>
+
+            <ul class="resume-bullets">
+
+              <li>
+                Developed a campus routing application in C++ that generates
+                the most efficient route between buildings to facilitate
+                user navigation across campus.
+              </li>
+
+              <li>
+                Implemented efficient searching algorithms including Prim’s,
+                Kruskal’s, and Dijkstra’s, as well as sorting algorithms like
+                merge sort and quick sort, with emphasis on space and time
+                complexity.
+              </li>
+
+            </ul>
+
+            <div class="project-tech">
+              <span>C++</span>
+              <span>Dijkstra</span>
+              <span>Prim</span>
+              <span>Kruskal</span>
+            </div>
+
+          </article>
+
+
+          <!-- PROJECT 04 -->
+
+          <article class="project-card">
+
+            <span class="project-number">
+              PROJECT / 04 · SPRING 2021
+            </span>
+
+            <h3>
+              Address Lookup System using Binary Search Trees
+            </h3>
+
+            <ul class="resume-bullets">
+
+              <li>
+                Built a C++ database tool modeled after Acxiom to store and
+                query large-scale address data using binary search trees
+                (BST).
+              </li>
+
+              <li>
+                Parsed and organized thousands of records from an Address.txt
+                file, including house number, street name, city, state, and
+                zip code, simulating real-world data retrieval.
+              </li>
+
+            </ul>
+
+            <div class="project-tech">
+              <span>C++</span>
+              <span>BST</span>
+              <span>Data Structures</span>
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+
+       DIFFERENT COMPOSITION FROM HERO.
+
+       Direction:
+       BOTTOM RIGHT → UPWARD / LEFT
+
+       The strongest curvature begins outside the lower-right
+       corner, fans upward, and fades as it moves into the page.
+       ======================================================= -->
+
+  <footer class="footer architectural-section">
+
+    <div class="wave-art" aria-hidden="true">
+
+      <svg
+        viewBox="0 0 1600 500"
+        preserveAspectRatio="xMidYMid slice"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+
+        <defs>
+
+          <!--
+            Footer gradient reverses the emphasis:
+            strongest near bottom/right, dissolving upward/left.
+          -->
+          <linearGradient
+            id="footerStroke"
+            x1="100%"
+            y1="100%"
+            x2="0%"
+            y2="0%"
+          >
+            <stop
+              offset="0%"
+              stop-color="#FFDEAD"
+              stop-opacity="0.52"
+            />
+
+            <stop
+              offset="30%"
+              stop-color="#FFDEAD"
+              stop-opacity="0.38"
+            />
+
+            <stop
+              offset="62%"
+              stop-color="#FFDEAD"
+              stop-opacity="0.13"
+            />
+
+            <stop
+              offset="100%"
+              stop-color="#FFDEAD"
+              stop-opacity="0"
+            />
+          </linearGradient>
+
+
+          <linearGradient
+            id="footerMaskGradient"
+            x1="100%"
+            y1="100%"
+            x2="8%"
+            y2="12%"
+          >
+            <stop offset="0%" stop-color="white" />
+            <stop offset="30%" stop-color="#d5d5d5" />
+            <stop offset="62%" stop-color="#676767" />
+            <stop offset="100%" stop-color="black" />
+          </linearGradient>
+
+          <mask id="footerFade">
+            <rect
+              width="100%"
+              height="100%"
+              fill="url(#footerMaskGradient)"
+            />
+          </mask>
+
+          <filter
+            id="footerSoft"
+            x="-10%"
+            y="-10%"
+            width="120%"
+            height="120%"
+          >
+            <feGaussianBlur stdDeviation="0.45" />
+          </filter>
+
+        </defs>
+
+
+        <g
+          mask="url(#footerFade)"
+          fill="none"
+          stroke="url(#footerStroke)"
+          stroke-linecap="round"
+          filter="url(#footerSoft)"
+        >
+
+          <!--
+            Bottom-right fan.
+            Again: unique curves rather than a repeating pattern.
+          -->
+
+          <path
+            d="M 260 610
+               C 650 570, 900 480, 1090 350
+               C 1280 220, 1430 120, 1710 45"
+            stroke-width="13"
+          />
+
+          <path
+            d="M 315 625
+               C 685 582, 925 496, 1110 370
+               C 1295 244, 1445 145, 1715 70"
+            stroke-width="12.5"
+          />
+
+          <path
+            d="M 370 640
+               C 720 595, 950 513, 1130 390
+               C 1310 268, 1460 171, 1720 96"
+            stroke-width="12"
+          />
+
+          <path
+            d="M 425 655
+               C 755 608, 975 530, 1150 411
+               C 1326 292, 1475 198, 1725 123"
+            stroke-width="11.5"
+          />
+
+          <path
+            d="M 480 670
+               C 790 622, 1000 548, 1170 432
+               C 1342 316, 1490 225, 1730 151"
+            stroke-width="11"
+          />
+
+          <path
+            d="M 535 685
+               C 825 636, 1025 566, 1190 454
+               C 1358 340, 1505 252, 1735 179"
+            stroke-width="10.5"
+          />
+
+          <path
+            d="M 590 700
+               C 860 650, 1050 584, 1210 476
+               C 1374 364, 1520 280, 1740 208"
+            stroke-width="10"
+          />
+
+          <path
+            d="M 645 715
+               C 895 664, 1075 602, 1230 498
+               C 1390 389, 1535 308, 1745 237"
+            stroke-width="9.5"
+          />
+
+          <path
+            d="M 700 730
+               C 930 678, 1100 620, 1250 520
+               C 1406 414, 1550 336, 1750 267"
+            stroke-width="9"
+          />
+
+          <path
+            d="M 755 745
+               C 965 692, 1125 638, 1270 542
+               C 1422 439, 1565 365, 1755 297"
+            stroke-width="8.5"
+          />
+
+          <path
+            d="M 810 760
+               C 1000 706, 1150 656, 1290 564
+               C 1438 464, 1580 394, 1760 328"
+            stroke-width="8"
+          />
+
+          <path
+            d="M 865 775
+               C 1035 720, 1175 674, 1310 586
+               C 1454 489, 1595 423, 1765 359"
+            stroke-width="7.5"
+          />
+
+          <path
+            d="M 920 790
+               C 1070 734, 1200 692, 1330 608
+               C 1470 514, 1610 452, 1770 390"
+            stroke-width="7"
+          />
+
+        </g>
+
+      </svg>
+
+    </div>
+
+
+    <div class="container architectural-content footer-content">
+
+      <div class="eyebrow">
+        Let's Connect
+      </div>
+
+      <h2>
+        Have an interesting<br>
+        problem to solve?
+      </h2>
+
+      <div class="footer-actions">
+
+        <a
+          class="button button-primary"
+          href="mailto:diperezbakovic@gmail.com"
+        >
+          Get In Touch
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a
+          class="button button-secondary"
+          href="https://www.linkedin.com/in/diperezbakovic"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>Diego I. Perez Bakovic</span>
+        <span>Software · Data · Product</span>
+        <span>© 2026</span>
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>

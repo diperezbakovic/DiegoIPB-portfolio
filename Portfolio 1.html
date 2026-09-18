@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diego I. Perez Bakovic — Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEF1EC;
+    --paper-dim:#E1E6DE;
+    --ink:#1B2B2E;
+    --ink-soft:#51615F;
+    --line:#4C6B63;
+    --accent:#C1502E;
+    --max-w: 880px;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,h2,h3{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  a{ color: inherit; }
+
+  .wrap{
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Hero ---------- */
+
+  .hero{
+    padding: 88px 0 64px;
+    border-bottom: 1px solid rgba(27,43,46,0.14);
+  }
+
+  .hero-grid{
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .hero h1{
+    font-size: clamp(2.6rem, 5vw, 3.6rem);
+    line-height: 1.06;
+  }
+
+  .hero .role{
+    margin-top: 18px;
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    max-width: 46ch;
+  }
+
+  .hero .role strong{
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .contact-row{
+    margin-top: 30px;
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.88rem;
+  }
+
+  .contact-row a{
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+  }
+
+  .contact-row a:hover{ color: var(--accent); border-color: var(--accent); }
+
+  .node-art{ width: 100%; height: auto; }
+
+  .node-art .edge{
+    stroke: var(--line);
+    stroke-width: 1.4;
+    fill: none;
+    stroke-dasharray: 340;
+    stroke-dashoffset: 340;
+    animation: draw 1.8s ease-out forwards;
+  }
+  .node-art .edge:nth-child(2){ animation-delay: 0.15s; }
+  .node-art .edge:nth-child(3){ animation-delay: 0.3s; }
+  .node-art .edge:nth-child(4){ animation-delay: 0.45s; }
+  .node-art circle{
+    fill: var(--paper);
+    stroke: var(--ink);
+    stroke-width: 1.4;
+  }
+  .node-art circle.hub{ fill: var(--accent); stroke: var(--accent); }
+
+  @keyframes draw{ to{ stroke-dashoffset: 0; } }
+
+  /* ---------- Section shell ---------- */
+
+  section{ padding: 64px 0; }
+  section.dim{ background: var(--paper-dim); }
+
+  .eyebrow{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--line);
+    margin-bottom: 6px;
+  }
+
+  .section-head{ margin-bottom: 40px; }
+  .section-head h2{ font-size: 1.7rem; }
+
+  /* ---------- Timeline (experience + education) ---------- */
+
+  .timeline{
+    position: relative;
+    padding-left: 26px;
+  }
+
+  .timeline::before{
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 8px;
+    bottom: 8px;
+    width: 1.4px;
+    background: var(--line);
+    opacity: 0.5;
+  }
+
+  .t-item{
+    position: relative;
+    padding-bottom: 38px;
+  }
+  .t-item:last-child{ padding-bottom: 0; }
+
+  .t-item::before{
+    content: "";
+    position: absolute;
+    left: -26px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1.6px solid var(--accent);
+  }
+
+  .t-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .t-role{ font-size: 1.12rem; font-weight: 500; font-family: 'Fraunces', serif; }
+  .t-org{ color: var(--ink-soft); font-size: 0.95rem; margin-top: 2px; }
+  .t-date{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  .t-item ul{
+    margin: 12px 0 0;
+    padding-left: 18px;
+    color: var(--ink-soft);
+  }
+  .t-item li{ margin-bottom: 6px; font-size: 0.96rem; }
+
+  /* ---------- Projects ---------- */
+
+  .project{
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 20px;
+    padding: 30px 0;
+    border-top: 1px solid rgba(27,43,46,0.14);
+  }
+  .project:first-child{ border-top: none; padding-top: 0; }
+
+  .p-index{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--line);
+    padding-top: 4px;
+  }
+  .p-index .term{ display:block; color: var(--ink-soft); margin-top: 6px; }
+
+  .p-title{
+    font-family: 'Fraunces', serif;
+    font-size: 1.24rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .p-body{ color: var(--ink-soft); font-size: 0.97rem; }
+  .p-body ul{ margin: 10px 0 0; padding-left: 18px; }
+  .p-body li{ margin-bottom: 6px; }
+
+  /* ---------- Skills ---------- */
+
+  .skills-cols{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .chip-row{ display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    padding: 6px 12px;
+    border: 1px solid rgba(27,43,46,0.22);
+    border-radius: 3px;
+    background: var(--paper);
+  }
+
+  .lang-list{ list-style: none; padding: 0; margin: 0; }
+  .lang-list li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(27,43,46,0.12);
+    font-size: 0.95rem;
+  }
+  .lang-list li:last-child{ border-bottom: none; }
+
+  .dots{ font-family: 'IBM Plex Mono', monospace; letter-spacing: 3px; color: var(--accent); font-size: 0.9rem; }
+  .dots .off{ color: rgba(27,43,46,0.2); }
+
+  .cert-list{ list-style: none; padding: 0; margin: 18px 0 0; font-size: 0.93rem; color: var(--ink-soft); }
+  .cert-list li{ padding: 6px 0; }
+  .cert-list .cname{ color: var(--ink); }
+
+  /* ---------- Involvement ---------- */
+
+  .involve-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .involve-grid h3{
+    font-size: 0.95rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    color: var(--line);
+    margin-bottom: 14px;
+    text-transform: none;
+  }
+
+  .involve-grid ul{ list-style: none; padding: 0; margin: 0; }
+  .involve-grid li{
+    padding: 10px 0;
+    border-top: 1px solid rgba(27,43,46,0.12);
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+  }
+  .involve-grid li strong{ color: var(--ink); font-weight: 500; }
+
+  /* ---------- Footer ---------- */
+
+  footer{
+    padding: 48px 0 64px;
+    border-top: 1px solid rgba(27,43,46,0.14);
+  }
+  footer .foot-line{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer .foot-name{ font-family:'Fraunces', serif; font-size: 1.1rem; }
+  footer .foot-links{ display:flex; gap: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; }
+  footer a{ text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 1px; }
+  footer a:hover{ color: var(--accent); border-color: var(--accent); }
+
+  @media (max-width: 720px){
+    .hero-grid{ grid-template-columns: 1fr; }
+    .hero .node-art{ max-width: 260px; margin-top: 20px; }
+    .skills-cols, .involve-grid{ grid-template-columns: 1fr; gap: 32px; }
+    .project{ grid-template-columns: 1fr; }
+    .p-index{ display:flex; gap: 10px; align-items:baseline; }
+    .p-index .term{ margin-top:0; }
+    .t-date{ white-space: normal; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Diego I.<br>Perez Bakovic</h1>
+      <p class="role">Software engineer and graduate researcher at the <strong>University of Arkansas</strong>, working across mobile, AR, and applied algorithms — from campus-scale routing engines to Unity-based spatial guides.</p>
+      <div class="contact-row">
+        <a href="mailto:diperezbakovic@gmail.com">diperezbakovic@gmail.com</a>
+        <a href="https://www.linkedin.com/in/diperezbakovic" target="_blank" rel="noopener">linkedin.com/in/diperezbakovic</a>
+      </div>
+    </div>
+    <svg class="node-art" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
+      <path class="edge" d="M40,150 Q80,60 120,100" />
+      <path class="edge" d="M120,100 Q150,40 200,50" />
+      <path class="edge" d="M120,100 L60,40" />
+      <path class="edge" d="M120,100 Q160,150 190,160" />
+      <circle cx="40" cy="150" r="6"></circle>
+      <circle cx="60" cy="40" r="6"></circle>
+      <circle cx="200" cy="50" r="6"></circle>
+      <circle cx="190" cy="160" r="6"></circle>
+      <circle class="hub" cx="120" cy="100" r="8"></circle>
+    </svg>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Experience</div>
+      <h2>Work</h2>
+    </div>
+    <div class="timeline">
+
+      <div class="t-item">
+        <div class="t-head">
+          <div>
+            <div class="t-role">Graduate Assistant</div>
+            <div class="t-org">University of Arkansas</div>
+          </div>
+          <div class="t-date">Aug 2023 – Present</div>
+        </div>
+        <ul>
+          <li>Grades assignments and exams and holds regular office hours to help students work through course material.</li>
+          <li>Works with professors to keep grading standards consistent across Mobile Programming, Information Security, and Cloud Computing and Security.</li>
+        </ul>
+      </div>
+
+      <div class="t-item">
+        <div class="t-head">
+          <div>
+            <div class="t-role">Software Developer Intern</div>
+            <div class="t-org">AssureSoft</div>
+          </div>
+          <div class="t-date">May 2022 – Jul 2022</div>
+        </div>
+        <ul>
+          <li>Built a full web application from scratch with a team, using Git and Scrum ceremonies.</li>
+          <li>Developed and tested Angular and Node.js features to track new developers' training progress.</li>
+          <li>Built and tested CRUD APIs, optimizing database queries for front-end and back-end integration.</li>
+        </ul>
+      </div>
+
+      <div class="t-item">
+        <div class="t-head">
+          <div>
+            <div class="t-role">Research Assistant</div>
+            <div class="t-org">University of Arkansas</div>
+          </div>
+          <div class="t-date">Jan 2019 – May 2020</div>
+        </div>
+        <ul>
+          <li>Designed and demonstrated a pilot-scale benchtop filtration system for industrial contaminant removal.</li>
+          <li>Developed and optimized membrane manufacturing processes to improve filtration efficiency.</li>
+        </ul>
+      </div>
+
+      <div class="t-item">
+        <div class="t-head">
+          <div>
+            <div class="t-role">Quality Assurance Intern</div>
+            <div class="t-org">Saavedra Dairy Enterprises</div>
+          </div>
+          <div class="t-date">Jan 2018 – Jul 2018</div>
+        </div>
+        <ul>
+          <li>Ensured process metrics met quality and operational standards for continuous improvement.</li>
+          <li>Optimized material usage to cut waste, lower operating costs, and raise product value.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="dim">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Selected work</div>
+      <h2>Projects</h2>
+    </div>
+
+    <div class="project">
+      <div class="p-index">01<span class="term">Spring 2025</span></div>
+      <div>
+        <div class="p-title">Unity AR Campus Guide with GPS &amp; Audio</div>
+        <div class="p-body">
+          <p>A Unity-based augmented reality app that uses GPS-triggered zones to surface building descriptions and directional audio as visitors move across campus.</p>
+          <ul>
+            <li>Integrated the university's own virtual-tour text and audio for an authentic guide experience.</li>
+            <li>Designed a 3D Razorback mascot that reveals building info and audio controls on tap.</li>
+            <li>Built a world-space UI panel with scrollable text and play/pause logic using ARCore.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="p-index">02<span class="term">Fall 2022</span></div>
+      <div>
+        <div class="p-title">Kotlin Food Map with Geo-Tagged Reviews</div>
+        <div class="p-body">
+          <p>An Android app for sharing food reviews, ratings, and photos tied to real locations, built to fix the problem of inaccurate, disconnected reviews.</p>
+          <ul>
+            <li>Integrated the OpenStreetMap API for location-based recommendations.</li>
+            <li>Secured user data with Firebase Authentication so people see only their own reviews and those they follow.</li>
+            <li>Used Firebase Storage and Android Room to keep data in sync across devices.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="p-index">03<span class="term">Fall 2022</span></div>
+      <div>
+        <div class="p-title">Route Optimizer for Campus Navigation</div>
+        <div class="p-body">
+          <p>A C++ routing application that finds the most efficient path between buildings on campus.</p>
+          <ul>
+            <li>Implemented Prim's, Kruskal's, and Dijkstra's algorithms for pathfinding.</li>
+            <li>Applied merge sort and quick sort with close attention to space and time complexity.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="p-index">04<span class="term">Spring 2021</span></div>
+      <div>
+        <div class="p-title">Address Lookup System with Binary Search Trees</div>
+        <div class="p-body">
+          <p>A C++ database tool modeled after Acxiom, built to store and query large-scale address data using BSTs.</p>
+          <ul>
+            <li>Parsed and organized thousands of records from a raw address file — house number, street, city, state, and zip.</li>
+            <li>Simulated real-world data retrieval at scale.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Background</div>
+      <h2>Education</h2>
+    </div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-head">
+          <div>
+            <div class="t-role">M.S. Applied Business Analytics</div>
+            <div class="t-org">University of Arkansas</div>
+          </div>
+          <div class="t-date">2026 – 2027</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-head">
+          <div>
+            <div class="t-role">M.S. Computer Science</div>
+            <div class="t-org">University of Arkansas</div>
+          </div>
+          <div class="t-date">2023 – 2026</div>
+        </div>
+      </div>
+      <div class="t-item">
+        <div class="t-head">
+          <div>
+            <div class="t-role">B.S. Computer Science, Minor in Mathematics</div>
+            <div class="t-org">University of Arkansas</div>
+          </div>
+          <div class="t-date">2018 – 2023</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dim">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Toolset</div>
+      <h2>Skills &amp; Languages</h2>
+    </div>
+    <div class="skills-cols">
+      <div>
+        <div class="chip-row">
+          <span class="chip">Python</span>
+          <span class="chip">Java</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">TypeScript</span>
+          <span class="chip">Kotlin</span>
+          <span class="chip">SQL</span>
+          <span class="chip">Angular</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">Unity</span>
+          <span class="chip">Power BI</span>
+          <span class="chip">Tableau</span>
+          <span class="chip">Microsoft Office</span>
+        </div>
+        <ul class="cert-list">
+          <li><span class="cname">Programming Foundations with JavaScript, HTML and CSS</span> — Duke University, 2021</li>
+          <li><span class="cname">Python Data Structures</span> — University of Michigan, 2021</li>
+          <li><span class="cname">Programming for Everybody (Getting Started with Python)</span> — University of Michigan, 2021</li>
+        </ul>
+      </div>
+      <div>
+        <ul class="lang-list">
+          <li><span>English</span><span class="dots">●●●●</span></li>
+          <li><span>Spanish</span><span class="dots">●●●●</span></li>
+          <li><span>Quechua</span><span class="dots">●●●<span class="off">●</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Beyond the code</div>
+      <h2>Involvement</h2>
+    </div>
+    <div class="involve-grid">
+      <div>
+        <h3>Volunteer work</h3>
+        <ul>
+          <li><strong>Flood Relief Assistance</strong> — supported a community effort delivering essentials to flood-affected families.</li>
+          <li><strong>Nursing Home for the Elderly</strong> — organized recreational and support activities for residents.</li>
+          <li><strong>Reforestation Program</strong> — planted trees along riversides to reduce erosion.</li>
+          <li><strong>Youth Rehabilitation Center</strong> — led fundraising to build a learning center for teens in recovery.</li>
+          <li><strong>S.O.S. Orphanage</strong> — helped build an outdoor recreational space for children.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Organizations &amp; honors</h3>
+        <ul>
+          <li><strong>Vice-President</strong>, International Bolivian Organization (2019–2021)</li>
+          <li><strong>Member</strong>, International Bolivian Organization (2018–Present)</li>
+          <li><strong>Member</strong>, Society of Hispanic Professional Engineers (2018–Present)</li>
+          <li><strong>F.I.E.S. Tuition Scholarship</strong>, Foundation for the International Exchange of Students (2019–2021)</li>
+          <li><strong>Arkansas Academy of Chemical Engineers Scholarship</strong> (2019–2020)</li>
+          <li><strong>Top 100 High School Graduates in the State</strong>, Universidad Privada Boliviana (2017)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-line">
+    <div class="foot-name">Diego I. Perez Bakovic</div>
+    <div class="foot-links">
+      <a href="mailto:diperezbakovic@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/diperezbakovic" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
